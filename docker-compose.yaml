@@ -15,8 +15,9 @@
       ports:
         - 80:80
       volumes:
-        - ./joomla/html:/var/www/html
-        # - ./makedb.php:/makedb.php
+        - type: bind
+          source: ./joomla/html
+          target: /var/www/html
       depends_on:
         - db
 
@@ -26,7 +27,9 @@
       restart: always
       ports: []
       volumes:
-        - ./joomla/db:/var/lib/mysql
+        - type: bind
+          source: ./joomla/db
+          target: /var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=mysql
 
@@ -38,3 +41,7 @@
         - 8080:80
       environment:
         - PMA_HOST=db
+
+  volumes:
+    joomla:
+    mysql:

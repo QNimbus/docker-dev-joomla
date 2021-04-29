@@ -2,7 +2,9 @@
 
 - [About](#about)
 - [Usage](#usage)
-- [Database tools](#database-tools)
+- [Database](#database)
+- [Notes](#notes)
+  - [Docker for Windows using WSL2](#docker-for-windows-using-wsl2)
 - [Changelog](#changelog)
 
 Simple `docker-compose` development stack for Joomla, MySQL & PHPMyAdmin.
@@ -29,7 +31,7 @@ To stop the Docker stack using `docker-compose`:
 $ docker-compose down
 ```
 
-## Database tools
+## Database
 
 Dump Joomla database to file:
 
@@ -49,6 +51,14 @@ $ docker exec -i mysql mysql --user root --password=mysql < /var/lib/mysql/jooml
 $ docker exec -i mysql //bin/bash -c "mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql"
 ```
 
+## Notes
+
+### Docker for Windows using WSL2
+
+See: [Docker Desktop WSL 2 backend - Best practices](https://docs.docker.com/docker-for-windows/wsl/#best-practices)
+
+To get the best out of the file system performance when bind-mounting files, we recommend storing source code and other data that is bind-mounted into Linux containers (i.e., with docker run -v <host-path>:<container-path>) in the Linux file system, rather than the Windows file system. You can also refer to the [recommendation](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) from Microsoft.
+
 ## Changelog
 
 ### [Unreleased] <!-- omit in toc -->
@@ -57,12 +67,16 @@ $ docker exec -i mysql //bin/bash -c "mysql --user root --password=mysql < /var/
 
 - Database dump/restore snippets in README
 - `.vscode` folder and `settings.json`
+- Added `Notes` section in README
 
 #### Changed <!-- omit in toc -->
+
+- Made volume config in `docker-compose.yaml` more verbose
 
 ### [v0.0.1] - 2021-04-29 <!-- omit in toc -->
 
 #### Added <!-- omit in toc -->
 - Initial version of `docker-joomla-dev` repository
 
+[Unreleased]: https://github.com/QNimbus/docker-joomla-dev/compare/v0.0.1...HEAD
 [v0.0.1]: https://github.com/QNimbus/docker-joomla-dev/releases/tag/v0.0.1
