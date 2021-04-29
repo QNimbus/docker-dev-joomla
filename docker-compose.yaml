@@ -5,6 +5,7 @@
 
     joomla:
       image: joomla:php7.3
+      container_name: joomla
       restart: always
       environment:
         - JOOMLA_DB_HOST=db
@@ -21,6 +22,7 @@
 
     db:
       image: mysql:5.7
+      container_name: mysql
       restart: always
       ports: []
       volumes:
@@ -30,6 +32,7 @@
 
     phpmyadmin:
       image: phpmyadmin
+      container_name: phpmyadmin
       restart: always
       ports:
         - 8080:80
