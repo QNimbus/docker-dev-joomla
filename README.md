@@ -63,6 +63,8 @@ To get the best out of the file system performance when bind-mounting files, we 
 
 ### [Unreleased] <!-- omit in toc -->
 
+### [v0.0.2] - 2021-04-30 <!-- omit in toc -->
+
 #### Added <!-- omit in toc -->
 
 - Database dump/restore snippets in README
@@ -78,5 +80,6 @@ To get the best out of the file system performance when bind-mounting files, we 
 #### Added <!-- omit in toc -->
 - Initial version of `docker-joomla-dev` repository
 
-[Unreleased]: https://github.com/QNimbus/docker-joomla-dev/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/QNimbus/docker-joomla-dev/compare/v0.0.2...HEAD
+[v0.0.2]: https://github.com/QNimbus/docker-joomla-dev/releases/tag/v0.0.2
 [v0.0.1]: https://github.com/QNimbus/docker-joomla-dev/releases/tag/v0.0.1
