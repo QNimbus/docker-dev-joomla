@@ -2,7 +2,9 @@
 
 - [About](#about)
 - [Usage](#usage)
-- [Database](#database)
+- [Gettings started](#gettings-started)
+- [Useful commands](#useful-commands)
+  - [Database](#database)
 - [Notes](#notes)
   - [Docker for Windows using WSL2](#docker-for-windows-using-wsl2)
 - [Changelog](#changelog)
@@ -28,12 +30,51 @@ $ docker-compose up
 To stop the Docker stack using `docker-compose`:
 
 ```bash
+# To stop
 $ docker-compose down
 ```
 
-## Database
+To view log output of the running containers:
 
-Dump Joomla database to file:
+```bash
+# Last 10 lines of running containers
+$ docker-compose logs --tail=10
+
+# Continuous log output of running containers
+$ docker-compose logs --tail=10 --follow
+```
+
+## Gettings started
+
+After starting de Docker stack using the `docker-compose` command from the [usage](#usage) section you will have 3 Docker containers running. You can view the running containers by running:
+
+```bash
+# Using docker-compose
+$ docker-compose ps
+
+# Alternatively, using docker
+$ docker ps -f "name=joomla"
+```
+
+You will see something like this:
+
+```bash
+      Name                     Command               State          Ports
+---------------------------------------------------------------------------------
+joomla              /entrypoint.sh apache2-for ...   Up      0.0.0.0:80->80/tcp
+joomla_mysql        docker-entrypoint.sh mysqld      Up      3306/tcp, 33060/tcp
+joomla_phpmyadmin   /docker-entrypoint.sh apac ...   Up      0.0.0.0:8080->80/tcp
+```
+
+This means you can point your browser to [localhost](http://localhost:80) and you should see your Joomla instance. When you do this for the first time you will need to perform some basic configuration for Joomla. (e.g. database connection settings, admin user, et cetera)
+
+In the second setup section you need to enter the database connection settings. For the database host name you need to use `db` since that is the hostname of the Docker MySQL container. The username and password for the MySQL instance are `root` and `mysql` (see: [docker-compose.yaml](docker-compose.yaml))
+
+## Useful commands
+
+### Database
+
+To dump Joomla database to a file:
 
 ```bash
 $ docker exec mysql mysqldump --user root --password=mysql joomla > /var/lib/mysql/joomla.db.sql
@@ -42,7 +83,7 @@ $ docker exec mysql mysqldump --user root --password=mysql joomla > /var/lib/mys
 $ docker exec mysql //bin/bash -c "mysqldump --user root --password=mysql --databases joomla --add-drop-database > /var/lib/mysql/joomla.db.sql"
 ```
 
-Import Joomla database from file:
+To import Joomla database from a file:
 
 ```bash
 $ docker exec -i mysql mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql
@@ -57,11 +98,22 @@ $ docker exec -i mysql //bin/bash -c "mysql --user root --password=mysql < /var/
 
 See: [Docker Desktop WSL 2 backend - Best practices](https://docs.docker.com/docker-for-windows/wsl/#best-practices)
 
-To get the best out of the file system performance when bind-mounting files, we recommend storing source code and other data that is bind-mounted into Linux containers (i.e., with docker run -v <host-path>:<container-path>) in the Linux file system, rather than the Windows file system. You can also refer to the [recommendation](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) from Microsoft.
+To get the best out of the file system performance when bind-mounting files, we recommend storing source code and other data that is bind-mounted into Linux containers (i.e., with `docker run -v <host-path>:<container-path>`) in the Linux file system, rather than the Windows file system. You can also refer to the [recommendation](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) from Microsoft.
 
 ## Changelog
 
 ### [Unreleased] <!-- omit in toc -->
+
+#### Added <!-- omit in toc -->
+
+- Added `Getting started` section to README
+- Added `Useful commands` section to README
+
+#### Changed <!-- omit in toc -->
+
+- Renamed container names in `docker-compose` file
+- Removed obsolete `volumes` section from `docker-compose` file
+- Minor corrections and additions to README
 
 ### [v0.0.2] - 2021-04-30 <!-- omit in toc -->
 
