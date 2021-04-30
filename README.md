@@ -108,6 +108,8 @@ To get the best out of the file system performance when bind-mounting files, we 
 
 - Added `Getting started` section to README
 - Added `Useful commands` section to README
+- Added `dev` bind mount volume to `docker-compose` for Joomla development
+- Added empty `dev` folder to repository
 
 #### Changed <!-- omit in toc -->
 

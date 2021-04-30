@@ -18,6 +18,10 @@
         - type: bind
           source: ./joomla/html
           target: /var/www/html
+        - type: bind
+          source: ./dev
+          target: /var/www/html/dev
+          read_only: true
       depends_on:
         - db
 
