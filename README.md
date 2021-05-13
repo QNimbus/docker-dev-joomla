@@ -2,7 +2,9 @@
 
 - [About](#about)
 - [Usage](#usage)
-- [Gettings started](#gettings-started)
+  - [VSCode (devcontainer)](#vscode-devcontainer)
+  - [Standalone (docker-compose)](#standalone-docker-compose)
+- [Getting started](#getting-started)
 - [Useful commands](#useful-commands)
   - [Database](#database)
 - [Notes](#notes)
@@ -13,9 +15,21 @@ Simple `docker-compose` development stack for Joomla, MySQL & PHPMyAdmin.
 
 ## About
 
-TODO
+Joomla, MySQL and phpMyAdmin development container for use with Microsoft `VSCode` (or standalone, if desired). PHP XDebug is enabled for easy debugging within `VSCode`. The development container configuration for `vscode` includes the `felixfbecker.php-debug` PHP debug extension to work with PHP XDebug inside the container.
 
 ## Usage
+
+### VSCode (devcontainer)
+
+*Prerequisites: Ensure the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension is installed in VSCode (part of [Remote development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) extension pack)*
+
+Open the VSCode Command Palette using `Ctrl-Shift-P` on Windows or `Command-Shift-P` on MacOS. From the VSCode command palette execute the `Remote-Containers: Reopen in Container` command.
+
+The `Remote - Containers` commands are also available in the bottom left corner of the VSCode editor window in the status bar as shown the image below.
+
+![VSCode status bar](https://code.visualstudio.com/assets/docs/remote/wsl-tutorial/remote-status-bar.png)
+
+### Standalone (docker-compose)
 
 To start the Docker stack using `docker-compose`:
 
@@ -42,9 +56,12 @@ $ docker-compose logs --tail=10
 
 # Continuous log output of running containers
 $ docker-compose logs --tail=10 --follow
+
+# Continuous log output of specific container, e.g. 'joomla'
+$ docker-compose logs --tail=10 --follow joomla
 ```
 
-## Gettings started
+## Getting started
 
 After starting de Docker stack using the `docker-compose` command from the [usage](#usage) section you will have 3 Docker containers running. You can view the running containers by running:
 
@@ -108,6 +125,7 @@ To get the best out of the file system performance when bind-mounting files, we 
 
 - Added `Getting started` section to README
 - Added `Useful commands` section to README
+- Added `Usage` section to README
 - Added `dev` bind mount volume to `docker-compose` for Joomla development
 - Added empty `dev` folder to repository
 - Added vscode `.devcontainer` files
