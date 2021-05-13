@@ -110,12 +110,15 @@ To get the best out of the file system performance when bind-mounting files, we 
 - Added `Useful commands` section to README
 - Added `dev` bind mount volume to `docker-compose` for Joomla development
 - Added empty `dev` folder to repository
+- Added vscode `.devcontainer` files
+- Added vscode `launch.json` file for debug configuration
 
 #### Changed <!-- omit in toc -->
 
 - Renamed container names in `docker-compose` file
 - Removed obsolete `volumes` section from `docker-compose` file
 - Minor corrections and additions to README
+- Added PHP `xdebug` installation and configuration to container
 
 ### [v0.0.2] - 2021-04-30 <!-- omit in toc -->
 

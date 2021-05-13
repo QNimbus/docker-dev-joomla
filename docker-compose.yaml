@@ -4,7 +4,11 @@
   services:
 
     joomla:
-      image: joomla:php7.3
+      build:
+        context: ./
+        dockerfile: Dockerfile
+        args: {}
+      image: besquared/docker-joomla-dev
       container_name: joomla
       restart: always
       environment:
@@ -21,6 +25,14 @@
         - type: bind
           source: ./dev
           target: /var/www/html/dev
+          read_only: true
+        - type: bind
+          source: ./docker/php/conf.d/xdebug.ini
+          target: /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          read_only: true
+        - type: bind
+          source: ./docker/php/conf.d/error_reporting.ini
+          target: /usr/local/etc/php/conf.d/error_reporting.ini
           read_only: true
       depends_on:
         - db
