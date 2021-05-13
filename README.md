@@ -153,8 +153,8 @@ To get the best out of the file system performance when bind-mounting files, we 
 ### [v0.0.1] - 2021-04-29 <!-- omit in toc -->
 
 #### Added <!-- omit in toc -->
-- Initial version of `docker-joomla-dev` repository
+- Initial version of `docker-dev-joomla` repository
 
-[Unreleased]: https://github.com/QNimbus/docker-joomla-dev/compare/v0.0.2...HEAD
-[v0.0.2]: https://github.com/QNimbus/docker-joomla-dev/releases/tag/v0.0.2
-[v0.0.1]: https://github.com/QNimbus/docker-joomla-dev/releases/tag/v0.0.1
+[Unreleased]: https://github.com/QNimbus/docker-dev-joomla/compare/v0.0.2...HEAD
+[v0.0.2]: https://github.com/QNimbus/docker-dev-joomla/releases/tag/v0.0.2
+[v0.0.1]: https://github.com/QNimbus/docker-dev-joomla/releases/tag/v0.0.1

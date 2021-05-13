@@ -8,7 +8,7 @@
         context: ./
         dockerfile: Dockerfile
         args: {}
-      image: besquared/docker-joomla-dev
+      image: besquared/docker-dev-joomla
       container_name: joomla
       restart: always
       environment:
