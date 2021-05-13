@@ -131,6 +131,7 @@ To get the best out of the file system performance when bind-mounting files, we 
 - Added vscode `.devcontainer` files
 - Added vscode `launch.json` file for debug configuration
 - Added PHP `xdebug` installation and configuration to container
+- Added `pathMappings` config to `launch.json` for debugging source code
 
 #### Changed <!-- omit in toc -->
 
@@ -138,6 +139,8 @@ To get the best out of the file system performance when bind-mounting files, we 
 - Removed obsolete `volumes` section from `docker-compose` file
 - Minor corrections and additions to README
 - Commented out `dev`/`workspace` volume mount since VSCode takes care of this
+- Modified MySQL bound volume to a named volume
+- Removed `Launch currently open script` from `launch.json`
 
 ### [v0.0.2] - 2021-04-30 <!-- omit in toc -->
 

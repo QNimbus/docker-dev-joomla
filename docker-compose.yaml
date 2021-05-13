@@ -1,6 +1,9 @@
 ---
   version: '3.7'
 
+  volumes:
+    mysql_data:
+
   services:
 
     joomla:
@@ -20,7 +23,7 @@
         - 80:80
       volumes:
         - type: bind
-          source: ./joomla/html
+          source: ./joomla
           target: /var/www/html
         - type: bind
           source: ./docker/php/conf.d/xdebug.ini
@@ -46,9 +49,10 @@
         - MYSQL_ROOT_PASSWORD=mysql
       ports: []
       volumes:
-        - type: bind
-          source: ./joomla/db
+        - type: volume
+          source: mysql_data
           target: /var/lib/mysql
+          read_only: false
 
     phpmyadmin:
       image: phpmyadmin
