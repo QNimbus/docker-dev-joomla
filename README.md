@@ -132,7 +132,9 @@ To get the best out of the file system performance when bind-mounting files, we 
 - Added vscode `launch.json` file for debug configuration
 - Added PHP `xdebug` installation and configuration to container
 - Added `pathMappings` config to `launch.json` for debugging source code
-
+- Added several VSCode extensions for PHP and Joomla development to the devcontainer
+- Added PHP Composer and PHP CodeSniffer to devcontainer
+- Added `.editorconfig` to enforce Joomla development coding style standards
 #### Changed <!-- omit in toc -->
 
 - Renamed container names in `docker-compose` file

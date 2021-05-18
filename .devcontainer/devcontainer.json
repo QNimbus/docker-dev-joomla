@@ -26,7 +26,13 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"felixfbecker.php-debug"
+		"felixfbecker.php-debug",
+    "felixfbecker.php-intellisense",
+		"donjayamanne.git-extension-pack",
+		"anibalsanchez.vs-code-joomla-snippets",
+		"phproberto.vscode-php-getters-setters",
+		"ikappas.phpcs",
+    "wmaurer.change-case"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
