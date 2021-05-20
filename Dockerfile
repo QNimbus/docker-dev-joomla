@@ -1,5 +1,12 @@
 FROM joomla:php7.3
 
+# Install apt packages
+RUN apt-get update && apt-get install -y \
+    git \
+    && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
 # Install PHP XDebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
@@ -13,10 +20,3 @@ RUN /usr/local/bin/composer global require squizlabs/php_codesniffer "~3.5" && \
 
 # Install !Joomla Coding Standards for PHP CodeSniffer
 RUN /usr/local/bin/composer global require joomla/coding-standards "~3.0@alpha"
-
-# RUN apt-get update && apt-get install -y \
-#     gnupg2 \
-#     socat \
-#     && \
-#     rm -rf /var/lib/apt/lists/* && \
-#     apt-get clean

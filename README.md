@@ -5,6 +5,7 @@
   - [VSCode (devcontainer)](#vscode-devcontainer)
   - [Standalone (docker-compose)](#standalone-docker-compose)
 - [Getting started](#getting-started)
+- [Skipping manual configuration](#skipping-manual-configuration)
 - [Useful commands](#useful-commands)
   - [Database](#database)
 - [Notes](#notes)
@@ -87,6 +88,14 @@ This means you can point your browser to [localhost](http://localhost:80) and yo
 
 In the second setup section you need to enter the database connection settings. For the database host name you need to use `db` since that is the hostname of the Docker MySQL container. The username and password for the MySQL instance are `root` and `mysql` (see: [docker-compose.yaml](docker-compose.yaml))
 
+## Skipping manual configuration
+
+You can skip the initial manual configuration of Joomla! by running the `install.sh` script from the command line on the Docker host. This script copies a default `configuration.php` file to the Joomla! root folder, initializes the MySQL database for use with Joomla! and removes the Joomla! installation folder. The default admin user and password will become `admin:admin`.
+
+```bash
+$ ./install.sh
+```
+
 ## Useful commands
 
 ### Database
@@ -94,19 +103,19 @@ In the second setup section you need to enter the database connection settings. 
 To dump Joomla database to a file:
 
 ```bash
-$ docker exec mysql mysqldump --user root --password=mysql joomla > /var/lib/mysql/joomla.db.sql
+$ docker exec joomla_mysql mysqldump --user root --password=mysql joomla > /var/lib/mysql/joomla.db.sql
 
 # Note: when using Git Bash on Windows use the command below:
-$ docker exec mysql //bin/bash -c "mysqldump --user root --password=mysql --databases joomla --add-drop-database > /var/lib/mysql/joomla.db.sql"
+$ docker exec joomla_mysql //bin/bash -c "mysqldump --user root --password=mysql --databases joomla --add-drop-database > /var/lib/mysql/joomla.db.sql"
 ```
 
 To import Joomla database from a file:
 
 ```bash
-$ docker exec -i mysql mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql
+$ docker exec -i joomla_mysql mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql
 
 # Note: when using Git Bash on Windows use the command below:
-$ docker exec -i mysql //bin/bash -c "mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql"
+$ docker exec -i joomla_mysql //bin/bash -c "mysql --user root --password=mysql < /var/lib/mysql/joomla.db.sql"
 ```
 
 ## Notes
@@ -135,6 +144,8 @@ To get the best out of the file system performance when bind-mounting files, we 
 - Added several VSCode extensions for PHP and Joomla development to the devcontainer
 - Added PHP Composer and PHP CodeSniffer to devcontainer
 - Added `.editorconfig` to enforce Joomla development coding style standards
+- Added `install.sh` script to install default Joomla database and sample blog content
+
 #### Changed <!-- omit in toc -->
 
 - Renamed container names in `docker-compose` file
