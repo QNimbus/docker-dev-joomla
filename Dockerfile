@@ -3,6 +3,8 @@ FROM joomla:php7.3
 # Install apt packages
 RUN apt-get update && apt-get install -y \
     git \
+    unzip \
+    libtidy-dev \
     && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
@@ -10,6 +12,10 @@ RUN apt-get update && apt-get install -y \
 # Install PHP XDebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+# Install and enable PHP extensions
+RUN docker-php-ext-install tidy
+RUN docker-php-ext-enable tidy
 
 # Install PHP Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
